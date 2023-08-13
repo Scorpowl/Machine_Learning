@@ -10,3 +10,21 @@ from skimpy import skim
 pd.set_option("display.float_format", lambda x: '%.2f' % x)
 
 df = pd.read_csv("datasets/advertising.csv")
+
+#MSE FUNCTION
+#Y = bağımlı değişken sayısı
+def cost_function(Y, b, w, X):
+    m = len(Y)
+    sse = 0
+    for i in range(m):
+        y_tah = b + w*X[i]
+        y_ger = Y[i]
+        sse += (y_tah - y_ger) **2 
+        mse = sse / m
+        return mse
+    
+
+
+
+
+
