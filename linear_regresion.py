@@ -39,6 +39,13 @@ g = sns.regplot(x=X, y=y, scatter_kws={'color': 'b', 's': 9},
 g.set_title(f"Model Denklemi: Sales = {round(reg_model.intercept_[0], 2)} + TV*{round(reg_model.coef_[0][0], 2)}")
 g.set_ylabel("Satış Sayısı")
 g.set_xlabel("TV Harcamaları")
-plt.xlim(-10, 310)
-plt.ylim(bottom=0)
-plt.show()
+# plt.xlim(-10, 310)
+# plt.ylim(bottom=0)
+# plt.show()
+
+
+y_pred = reg_model.predict(X)
+hata = mean_squared_error(y , y_pred)
+print(hata)
+
+
