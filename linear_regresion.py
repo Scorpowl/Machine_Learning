@@ -60,6 +60,12 @@ df = pd.read_csv("datasets/advertising.csv")
 # #R-KARE
 # reg_model.score(X, y)
 
-skim(df)
+X = df.drop("sales", axis=1)
+y = df[["sales"]]
 
+#MODEL
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random_state=1)
+
+reg_model = LinearRegression().fit(X_train, y_train)
 
