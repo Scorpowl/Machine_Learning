@@ -70,3 +70,41 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.20, random
 reg_model = LinearRegression().fit(X_train, y_train)
 
 print(reg_model.coef_)
+
+yeni_veri = [[30],[10],[40]]
+yeni_veri = pd.DataFrame(yeni_veri).T
+
+# TAHMİN BAŞARISINI DEĞERLENDİRME
+
+y_pred = reg_model.predict(X_train)
+np.sqrt(mean_squared_error(y_train,y_pred))
+
+#TRAİN RKARE
+reg_model.score(X_train, y_train)
+
+# Test RMSE
+y_pred = reg_model.predict(X_test)
+np.sqrt(mean_squared_error(y_test, y_pred))
+# 1.41
+
+# Test RKARE
+reg_model.score(X_test, y_test)
+
+
+# 10 Katlı CV RMSE
+np.mean(np.sqrt(-cross_val_score(reg_model,
+                                 X,
+                                 y,
+                                 cv=10,
+                                 scoring="neg_mean_squared_error")))
+
+# 1.69
+
+
+# 5 Katlı CV RMSE
+np.mean(np.sqrt(-cross_val_score(reg_model,
+                                 X,
+                                 y,
+                                 cv=5,
+                                 scoring="neg_mean_squared_error")))
+# 1.71
