@@ -17,12 +17,14 @@ df = pd.read_csv("datasets/advertising.csv")
 def cost_function(Y, b, w, X):
     m = len(Y)
     sse = 0
-    for i in range(m):
-        y_tah = b + w*X[i]
-        y_ger = Y[i]
-        sse += (y_tah - y_ger) **2 
-        mse = sse / m
-        return mse
+
+    for i in range(0, m):
+        y_hat = b + w * X[i]
+        y = Y[i]
+        sse += (y_hat - y) ** 2
+        
+    mse = sse / m
+    return mse
     
 def update_weight(Y, b, w, X, learning_rate):
     m = len(Y)
@@ -30,7 +32,7 @@ def update_weight(Y, b, w, X, learning_rate):
     w_deriv_sum = 0
 
     for i in range(0,m):
-        y_hat = b + w * x[i]
+        y_hat = b + w * X[i]
         y_ger = Y[i]
 
         b_deriv_sum += (y_hat - y_ger)
@@ -51,13 +53,19 @@ def train(Y, initial_b, initial_w, X, learning_rate, num_iters):
         mse = cost_function(Y, b, w, X)
         cost_history.append(mse)
         if i % 100 == 0:
-            print("iter = {:d}    b = {:.2f}  mse= {:.4f}".format(i,b,w,mse))
+            print("iter={:d}    b={:.2f}    w={:.4f}    mse={:.4}".format(i,b,w,mse))
     print("After {0} iterations b = {1}, w = {2}, mse = {3}".format(num_iters,b,w, cost_function(Y,b,w,X)))
     return cost_history, b ,w 
 
-    
+X = df["radio"]
+Y = df["sales"]
 
+learning_rate = 0.001    
+initial_b = 0.001    
+initial_w = 0.001    
+num_iters = 10000    
 
+train(Y , initial_b, initial_w, X , learning_rate, num_iters)
 
 
 
