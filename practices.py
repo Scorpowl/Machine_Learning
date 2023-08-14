@@ -7,7 +7,9 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error
 from sklearn.model_selection import train_test_split, cross_val_score
 from skimpy import skim
 
-pd.set_option("display.float_format", lambda x: '%.2f' % x)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.float_format', lambda x: '%.3f' % x)
+pd.set_option('display.width', 500)
 
 df = pd.read_csv("datasets/diabetes.csv")
 
