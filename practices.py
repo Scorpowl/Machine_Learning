@@ -3,8 +3,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import mean_squared_error, mean_absolute_error
-from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix, classification_report, plot_roc_curve
+from sklearn.model_selection import train_test_split, cross_validate
+from sklearn.preprocessing import RobustScaler
 from skimpy import skim
 
 pd.set_option('display.max_columns', None)
