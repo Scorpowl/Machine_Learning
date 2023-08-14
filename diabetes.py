@@ -41,8 +41,8 @@ def plot_numerical_col(dataframe, numerical_col):
 
 cols = [col for col in df.columns if "Outcome" not in col]
 
-for col in cols:
-    plot_numerical_col(df, col)
+# for col in cols:
+#     plot_numerical_col(df, col)
 
 # skim(df)
 # print(df)
@@ -52,9 +52,15 @@ for col in cols:
 # 0   65.104
 # 1   34.896
 
+##########################
+# Target vs Features
+##########################
 
+def target_summary_with_num(dataframe, target, numerical_col):
+    print(dataframe.groupby(target).agg({numerical_col: "mean"}), end="\n\n\n")
 
-
+for col in cols:
+    target_summary_with_num(df, "Outcome", col)
 
 
 
