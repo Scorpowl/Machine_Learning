@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix, classification_report, RocCurveDisplay
 from sklearn.model_selection import train_test_split, cross_validate
 from sklearn.preprocessing import RobustScaler
@@ -39,6 +40,12 @@ def plot_numerical_col(dataframe, numerical_col):
     plt.xlabel(numerical_col)
     plt.show(block=True)
 
+def target_summary_with_num(dataframe, target, numerical_col):
+    print(dataframe.groupby(target).agg({numerical_col: "mean"}), end="\n\n\n")
+
+
+
+
 cols = [col for col in df.columns if "Outcome" not in col]
 
 # for col in cols:
@@ -56,11 +63,39 @@ cols = [col for col in df.columns if "Outcome" not in col]
 # Target vs Features
 ##########################
 
-def target_summary_with_num(dataframe, target, numerical_col):
-    print(dataframe.groupby(target).agg({numerical_col: "mean"}), end="\n\n\n")
+# for col in cols:
+#     target_summary_with_num(df, "Outcome", col)
+
+##########################
+# Data Preprocessing (Veri Ön İşleme)
+##########################
+
+replace_with_thresholds(df, "Insulin")
+
+# for col in cols:
+#     print(col, check_outlier(df, col))
 
 for col in cols:
-    target_summary_with_num(df, "Outcome", col)
+    df[col] = RobustScaler().fit_transform(df[[col]])
+
+##############
+# Model & Prediction
+##############
+
+y = df["Outcome"]
+
+X = df.drop(["Outcome"], axis=1)
+
+log_model = LogisticRegression().fit(X, y)
+
+
+
+
+
+
+
+
+
 
 
 
