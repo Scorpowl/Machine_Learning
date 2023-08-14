@@ -3,14 +3,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix, classification_report, plot_roc_curve
+from sklearn.metrics import accuracy_score, roc_auc_score, confusion_matrix, classification_report, RocCurveDisplay
 from sklearn.model_selection import train_test_split, cross_validate
 from sklearn.preprocessing import RobustScaler
 from skimpy import skim
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.float_format', lambda x: '%.3f' % x)
-pd.set_option('display.width', 500)
+# pd.set_option('display.width', 500)
 
 df = pd.read_csv("datasets/diabetes.csv")
 
@@ -34,12 +34,23 @@ def replace_with_thresholds(dataframe, variable):
     dataframe.loc[(dataframe[variable] < low_limit), variable] = low_limit
     dataframe.loc[(dataframe[variable] > up_limit), variable] = up_limit
 
+def plot_numerical_col(dataframe, numerical_col):
+    dataframe[numerical_col].hist(bins=20)
+    plt.xlabel(numerical_col)
+    plt.show(block=True)
 
+cols = [col for col in df.columns if "Outcome" not in col]
 
+for col in cols:
+    plot_numerical_col(df, col)
 
+# skim(df)
+# print(df)
 
+# print(100 * df["Outcome"].value_counts() / len(df))
 
-
+# 0   65.104
+# 1   34.896
 
 
 
