@@ -162,11 +162,37 @@ cv_results = cross_validate(log_model,
                             scoring=["accuracy", "precision", "recall", "f1", "roc_auc"])
 
 
+# Accuracy: 0.78
+# Precision: 0.74
+# Recall: 0.58
+# F1-score: 0.65
+
+# Accuracy: 0.77
+# Precision: 0.79
+# Recall: 0.53
+# F1-score: 0.63
 
 
+cv_results['test_accuracy'].mean()
+# Accuracy: 0.7721
 
+cv_results['test_precision'].mean()
+# Precision: 0.7192
 
+cv_results['test_recall'].mean()
+# Recall: 0.5747
 
+cv_results['test_f1'].mean()
+# F1-score: 0.6371
 
+cv_results['test_roc_auc'].mean()
+# AUC: 0.8327
 
+######################################################
+# Prediction for A New Observation
+######################################################
 
+X.columns
+
+random_user = X.sample(1, random_state=45)
+log_model.predict(random_user)
