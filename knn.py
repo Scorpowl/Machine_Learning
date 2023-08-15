@@ -13,6 +13,7 @@ X_scaled = StandardScaler().fit_transform(X)
 
 X = pd.DataFrame(X_scaled, columns=X.columns)
 
+knn_model = KNeighborsClassifier().fit(X,y)
 
 
 
