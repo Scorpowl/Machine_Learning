@@ -46,7 +46,12 @@ cv_results['test_roc_auc'].mean()
 # 0.59
 # 0.78
 
+# 1. Örnek boyutu arttıralabilir.
+# 2. Veri ön işleme
+# 3. Özellik mühendisliği
+# 4. İlgili algoritma için optimizasyonlar yapılabilir.
 
+knn_model.get_params()
 
 
 
