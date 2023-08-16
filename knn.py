@@ -19,7 +19,22 @@ random_user = X.sample(1, random_state=45)
 
 knn_model.predict(random_user)
 
+################################################
+# 4. Model Evaluation
+################################################
 
+# Confusion matrix için y_pred:
+y_pred = knn_model.predict(X)
+
+# AUC için y_prob:
+y_prob = knn_model.predict_proba(X)[:, 1]
+
+print(classification_report(y, y_pred))
+# acc 0.83
+# f1 0.74
+# AUC
+roc_auc_score(y, y_prob)
+# 0.90
 
 
 
