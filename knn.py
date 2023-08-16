@@ -36,7 +36,11 @@ print(classification_report(y, y_pred))
 roc_auc_score(y, y_prob)
 # 0.90
 
+cv_results = cross_validate(knn_model, X, y, cv=5, scoring=["accuracy", "f1", "roc_auc"])
 
+cv_results['test_accuracy'].mean()
+cv_results['test_f1'].mean()
+cv_results['test_roc_auc'].mean()
 
 
 
