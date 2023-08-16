@@ -42,7 +42,9 @@ cv_results['test_accuracy'].mean()
 cv_results['test_f1'].mean()
 cv_results['test_roc_auc'].mean()
 
-
+# 0.73
+# 0.59
+# 0.78
 
 
 
