@@ -15,7 +15,9 @@ X = pd.DataFrame(X_scaled, columns=X.columns)
 
 knn_model = KNeighborsClassifier().fit(X,y)
 
+random_user = X.sample(1, random_state=45)
 
+knn_model.predict(random_user)
 
 
 
