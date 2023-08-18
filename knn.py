@@ -72,4 +72,10 @@ knn_gs_best.best_params_
 # 6. Final Model
 ################################################
 
+knn_final = knn_model.set_params(**knn_gs_best.best_params_).fit(X, y)
 
+cv_results = cross_validate(knn_final,
+                            X,
+                            y,
+                            cv=5,
+                            scoring=["accuracy", "f1", "roc_auc"])
