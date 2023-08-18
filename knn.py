@@ -60,7 +60,11 @@ knn_model.get_params()
 knn_model = KNeighborsClassifier()
 knn_model.get_params()
 
-
+knn_gs_best = GridSearchCV(knn_model,
+                           knn_params,
+                           cv=5,
+                           n_jobs=-1,
+                           verbose=1).fit(X, y)
 
 
 
