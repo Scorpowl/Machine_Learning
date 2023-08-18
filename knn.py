@@ -79,3 +79,11 @@ cv_results = cross_validate(knn_final,
                             y,
                             cv=5,
                             scoring=["accuracy", "f1", "roc_auc"])
+
+cv_results['test_accuracy'].mean()
+cv_results['test_f1'].mean()
+cv_results['test_roc_auc'].mean()
+
+random_user = X.sample(1)
+
+knn_final.predict(random_user)
