@@ -66,6 +66,10 @@ knn_gs_best = GridSearchCV(knn_model,
                            n_jobs=-1,
                            verbose=1).fit(X, y)
 
+knn_gs_best.best_params_
 
+################################################
+# 6. Final Model
+################################################
 
 
