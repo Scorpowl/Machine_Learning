@@ -53,7 +53,12 @@ cv_results['test_roc_auc'].mean()
 
 knn_model.get_params()
 
+################################################
+# 5. Hyperparameter Optimization
+################################################
 
+knn_model = KNeighborsClassifier()
+knn_model.get_params()
 
 
 
