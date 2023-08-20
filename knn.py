@@ -30,71 +30,73 @@ random_user = X.sample(1, random_state=45)
 
 knn_model.predict(random_user)
 
+print(random_user)
+
 ################################################
 # 4. Model Evaluation
 ################################################
 
-# Confusion matrix için y_pred:
-y_pred = knn_model.predict(X)
+# # Confusion matrix için y_pred:
+# y_pred = knn_model.predict(X)
 
-# AUC için y_prob:
-y_prob = knn_model.predict_proba(X)[:, 1]
+# # AUC için y_prob:
+# y_prob = knn_model.predict_proba(X)[:, 1]
 
-print(classification_report(y, y_pred))
-# acc 0.83
-# f1 0.74
-# AUC
-roc_auc_score(y, y_prob)
-# 0.90
+# print(classification_report(y, y_pred))
+# # acc 0.83
+# # f1 0.74
+# # AUC
+# roc_auc_score(y, y_prob)
+# # 0.90
 
-cv_results = cross_validate(knn_model, X, y, cv=5, scoring=["accuracy", "f1", "roc_auc"])
+# cv_results = cross_validate(knn_model, X, y, cv=5, scoring=["accuracy", "f1", "roc_auc"])
 
-cv_results['test_accuracy'].mean()
-cv_results['test_f1'].mean()
-cv_results['test_roc_auc'].mean()
+# cv_results['test_accuracy'].mean()
+# cv_results['test_f1'].mean()
+# cv_results['test_roc_auc'].mean()
 
-# 0.73
-# 0.59
-# 0.78
+# # 0.73
+# # 0.59
+# # 0.78
 
-# 1. Örnek boyutu arttıralabilir.
-# 2. Veri ön işleme
-# 3. Özellik mühendisliği
-# 4. İlgili algoritma için optimizasyonlar yapılabilir.
+# # 1. Örnek boyutu arttıralabilir.
+# # 2. Veri ön işleme
+# # 3. Özellik mühendisliği
+# # 4. İlgili algoritma için optimizasyonlar yapılabilir.
 
-knn_model.get_params()
+# knn_model.get_params()
 
-################################################
-# 5. Hyperparameter Optimization
-################################################
+# ################################################
+# # 5. Hyperparameter Optimization
+# ################################################
 
-knn_model = KNeighborsClassifier()
-knn_model.get_params()
+# knn_model = KNeighborsClassifier()
+# knn_model.get_params()
 
-knn_gs_best = GridSearchCV(knn_model,
-                           knn_params,
-                           cv=5,
-                           n_jobs=-1,
-                           verbose=1).fit(X, y)
+# knn_gs_best = GridSearchCV(knn_model,
+#                            knn_params,
+#                            cv=5,
+#                            n_jobs=-1,
+#                            verbose=1).fit(X, y)
 
-knn_gs_best.best_params_
+# knn_gs_best.best_params_
 
-################################################
-# 6. Final Model
-################################################
+# ################################################
+# # 6. Final Model
+# ################################################
 
-knn_final = knn_model.set_params(**knn_gs_best.best_params_).fit(X, y)
+# knn_final = knn_model.set_params(**knn_gs_best.best_params_).fit(X, y)
 
-cv_results = cross_validate(knn_final,
-                            X,
-                            y,
-                            cv=5,
-                            scoring=["accuracy", "f1", "roc_auc"])
+# cv_results = cross_validate(knn_final,
+#                             X,
+#                             y,
+#                             cv=5,
+#                             scoring=["accuracy", "f1", "roc_auc"])
 
-cv_results['test_accuracy'].mean()
-cv_results['test_f1'].mean()
-cv_results['test_roc_auc'].mean()
+# cv_results['test_accuracy'].mean()
+# cv_results['test_f1'].mean()
+# cv_results['test_roc_auc'].mean()
 
-random_user = X.sample(1)
+# random_user = X.sample(1)
 
-knn_final.predict(random_user)
+# knn_final.predict(random_user)
