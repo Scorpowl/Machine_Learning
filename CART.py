@@ -52,16 +52,37 @@ classification_report(y, y_pred)
 # AUC
 roc_auc_score(y, y_prob)
 
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.30, random_state=45)
 
+cart_model = DecisionTreeClassifier(random_state=17).fit(X_train, y_train)
 
+y_pred = cart_model.predict(X_train)
+y_prob = cart_model.predict_proba(X_train)[:, 1]
+# print(classification_report(y_train, y_pred))
+# print(roc_auc_score(y_train, y_prob))
 
+y_pred = cart_model.predict(X_test)
+y_prob = cart_model.predict_proba(X_test)[:, 1]
+# print(classification_report(y_test, y_pred))
+# print(roc_auc_score(y_test, y_prob))
 
+#####################
+# CV ile Başarı Değerlendirme
+#####################
 
+cart_model = DecisionTreeClassifier(random_state=17).fit(X,y)
 
+cv_results = cross_validate(cart_model,
+                            X, y,
+                            cv=5,
+                            scoring=["accuracy", "f1", "roc_auc"])
 
-
-
-
+cv_results['test_accuracy'].mean()
+# 0.7058568882098294
+cv_results['test_f1'].mean()
+# 0.5710621194523633
+cv_results['test_roc_auc'].mean()
+# 0.6719440950384347
 
 
 
