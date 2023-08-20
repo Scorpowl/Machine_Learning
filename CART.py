@@ -28,9 +28,29 @@ from sklearn.model_selection import train_test_split, GridSearchCV, cross_valida
 from skompiler import skompile
 # import graphviz
 
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width', 500)
 
+warnings.simplefilter(action='ignore', category=Warning)
 
+df = pd.read_csv("datasets/diabetes.csv")
 
+y = df["Outcome"]
+X = df.drop(["Outcome"], axis=1)
+
+cart_model = DecisionTreeClassifier(random_state=1).fit(X, y)
+
+# Confusion matrix için y_pred:
+y_pred = cart_model.predict(X)
+
+# AUC için y_prob:
+y_prob = cart_model.predict_proba(X)[:, 1]
+
+# Confusion matrix
+classification_report(y, y_pred)
+
+# AUC
+roc_auc_score(y, y_prob)
 
 
 
