@@ -69,16 +69,19 @@ knn_model.get_params()
 # # 5. Hyperparameter Optimization
 # ################################################
 
-# knn_model = KNeighborsClassifier()
-# knn_model.get_params()
+knn_model = KNeighborsClassifier()
+knn_model.get_params()
 
-# knn_gs_best = GridSearchCV(knn_model,
-#                            knn_params,
-#                            cv=5,
-#                            n_jobs=-1,
-#                            verbose=1).fit(X, y)
+knn_params = {"n_neighbors": range(2,50)}
 
-# knn_gs_best.best_params_
+knn_gs_best = GridSearchCV(knn_model,
+                           knn_params,
+                           cv=5,
+                           n_jobs=-1,
+                           verbose=1).fit(X, y)
+
+knn_gs_best.best_params_
+#17
 
 # ################################################
 # # 6. Final Model
