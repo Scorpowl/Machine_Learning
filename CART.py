@@ -134,3 +134,13 @@ def plot_importance(model, features, num=len(X), save=False):
     if save:
         plt.savefig('importances.png')
 
+# plot_importance(cart_final, X, num=5)
+
+train_score, test_score = validation_curve(cart_final, X, y,
+                                           param_name="max_depth",
+                                           param_range=range(1, 11),
+                                           scoring="roc_auc",
+                                           cv=10)
+
+mean_train_score = np.mean(train_score, axis=1)
+mean_test_score = np.mean(test_score, axis=1)
