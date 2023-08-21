@@ -144,3 +144,19 @@ train_score, test_score = validation_curve(cart_final, X, y,
 
 mean_train_score = np.mean(train_score, axis=1)
 mean_test_score = np.mean(test_score, axis=1)
+
+# plt.plot(range(1, 11), mean_train_score,
+#          label="Training Score", color='b')
+
+# plt.plot(range(1, 11), mean_test_score,
+#          label="Validation Score", color='g')
+
+# plt.title("Validation Curve for CART")
+# plt.xlabel("Number of max_depth")
+# plt.ylabel("AUC")
+# plt.tight_layout()
+# plt.legend(loc='best')
+# plt.show()
+
+
+
