@@ -84,3 +84,14 @@ cv_results['test_f1'].mean()
 cv_results['test_roc_auc'].mean()
 # 0.6719440950384347
 
+# 4. Hyperparameter Optimization with GridSearchCV
+
+cart_params = {'max_depth': range(1, 11),
+               "min_samples_split": range(2, 20)}
+
+
+cart_best_grid = GridSearchCV(cart_model, cart_params, cv = 5, n_jobs=-1, verbose=1).fit(X,y)
+
+print(cart_best_grid.best_params_)
+
+cart_best_grid.best_score_
