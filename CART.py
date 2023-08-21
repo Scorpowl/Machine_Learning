@@ -26,7 +26,7 @@ from sklearn.tree import DecisionTreeClassifier, export_graphviz, export_text
 from sklearn.metrics import classification_report, roc_auc_score
 from sklearn.model_selection import train_test_split, GridSearchCV, cross_validate, validation_curve
 from skompiler import skompile
-# import graphviz
+import graphviz
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 500)
@@ -83,30 +83,4 @@ cv_results['test_f1'].mean()
 # 0.5710621194523633
 cv_results['test_roc_auc'].mean()
 # 0.6719440950384347
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
