@@ -178,3 +178,12 @@ def val_curve_params(model, X, y, param_name, param_range, scoring="roc_auc", cv
     plt.legend(loc='best')
     plt.show(block=True)
 
+# val_curve_params(cart_final, X, y, "max_depth", range(1, 11), scoring="f1")
+
+cart_val_params = [["max_depth", range(1, 11)], ["min_samples_split", range(2, 20)]]
+
+# for i in range(len(cart_val_params)):
+#     val_curve_params(cart_model, X, y, cart_val_params[i][0], cart_val_params[i][1])
+
+
+
