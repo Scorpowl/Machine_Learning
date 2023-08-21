@@ -185,5 +185,12 @@ cart_val_params = [["max_depth", range(1, 11)], ["min_samples_split", range(2, 2
 # for i in range(len(cart_val_params)):
 #     val_curve_params(cart_model, X, y, cart_val_params[i][0], cart_val_params[i][1])
 
+def tree_graph(model, col_names, file_name):
+    tree_str = export_graphviz(model, feature_names=col_names, filled=True, out_file=None)
+    graph = pydotplus.graph_from_dot_data(tree_str)
+    graph.write_png(file_name)
 
 
+tree_graph(model=cart_final, col_names=X.columns, file_name="cart_final.png")
+
+cart_final.get_params()
