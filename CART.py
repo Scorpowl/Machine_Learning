@@ -95,3 +95,22 @@ cart_best_grid = GridSearchCV(cart_model, cart_params, cv = 5, n_jobs=-1, verbos
 print(cart_best_grid.best_params_)
 
 cart_best_grid.best_score_
+
+################################################
+# 5. Final Model
+################################################
+
+cart_final = DecisionTreeClassifier(**cart_best_grid.best_params_, random_state=17).fit(X, y)
+cart_final.get_params()
+
+cart_final = cart_model.set_params(**cart_best_grid.best_params_).fit(X, y)
+
+cv_results = cross_validate(cart_final,
+                            X, y,
+                            cv=5,
+                            scoring=["accuracy", "f1", "roc_auc"])
+
+
+
+
+
