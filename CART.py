@@ -195,16 +195,16 @@ tree_graph(model=cart_final, col_names=X.columns, file_name="cart_final.png")
 
 cart_final.get_params()
 
-################################################
+####################
 # 9. Extracting Decision Rules
-################################################
+####################
 
 tree_rules = export_text(cart_final, feature_names=list(X.columns))
 print(tree_rules)
 
-################################################
+################################
 # 10. Extracting Python Codes of Decision Rules
-################################################
+################################
 
 # sklearn '0.23.1' versiyonu ile yapılabilir.
 # pip install scikit-learn==0.23.1
@@ -216,6 +216,8 @@ print(skompile(cart_final.predict).to('sqlalchemy/sqlite'))
 print(skompile(cart_final.predict).to('excel'))
 
 
-################################################
+########################
 # 11. Prediction using Python Codes
-################################################
+########################
+
+def predict_with_rules(x):
