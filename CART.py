@@ -274,3 +274,13 @@ def predict_with_rules(x):
         [6] <= 0.3004999905824661 else 1 if x[7] <= 44.0 else (0 if x[7] <=
         51.0 else 1 if x[6] <= 1.1565000414848328 else 0) if x[0] <= 6.5 else 1
         ) if x[4] <= 629.5 else 1 if x[6] <= 0.4124999940395355 else 0)
+
+X.columns
+
+x = [12, 13, 20, 23, 4, 55, 12, 7]
+
+
+
+
+
+
