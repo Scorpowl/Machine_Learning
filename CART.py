@@ -199,7 +199,8 @@ cart_final.get_params()
 # 9. Extracting Decision Rules
 ################################################
 
-
+tree_rules = export_text(cart_final, feature_names=list(X.columns))
+print(tree_rules)
 
 
 
