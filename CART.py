@@ -194,3 +194,13 @@ def tree_graph(model, col_names, file_name):
 tree_graph(model=cart_final, col_names=X.columns, file_name="cart_final.png")
 
 cart_final.get_params()
+
+################################################
+# 9. Extracting Decision Rules
+################################################
+
+
+
+
+
+
