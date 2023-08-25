@@ -206,4 +206,9 @@ print(tree_rules)
 # 10. Extracting Python Codes of Decision Rules
 ################################################
 
+# sklearn '0.23.1' versiyonu ile yapılabilir.
+# pip install scikit-learn==0.23.1
 
+print(skompile(cart_final.predict).to('python/code'))
+
+print(skompile(cart_final.predict).to('sqlalchemy/sqlite'))
