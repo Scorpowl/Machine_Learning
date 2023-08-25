@@ -212,3 +212,10 @@ print(tree_rules)
 print(skompile(cart_final.predict).to('python/code'))
 
 print(skompile(cart_final.predict).to('sqlalchemy/sqlite'))
+
+print(skompile(cart_final.predict).to('excel'))
+
+
+################################################
+# 11. Prediction using Python Codes
+################################################
