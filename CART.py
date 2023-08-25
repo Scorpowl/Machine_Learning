@@ -279,7 +279,11 @@ X.columns
 
 x = [12, 13, 20, 23, 4, 55, 12, 7]
 
+predict_with_rules(x)
 
+x = [6, 148, 70, 35, 0, 30, 0.62, 50]
+
+predict_with_rules(x)
 
 
 
