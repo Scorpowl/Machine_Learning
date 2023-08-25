@@ -291,4 +291,8 @@ predict_with_rules(x)
 
 joblib.dump(cart_final, "cart_final.pkl")
 
+cart_model_from_disc = joblib.load("cart_final.pkl")
 
+x = [12, 13, 20, 23, 4, 55, 12, 7]
+
+cart_model_from_disc.predict(pd.DataFrame(x).T)
