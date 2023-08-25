@@ -285,6 +285,10 @@ x = [6, 148, 70, 35, 0, 30, 0.62, 50]
 
 predict_with_rules(x)
 
+################################################
+# 12. Saving and Loading Model
+################################################
 
+joblib.dump(cart_final, "cart_final.pkl")
 
 
