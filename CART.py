@@ -202,6 +202,8 @@ cart_final.get_params()
 tree_rules = export_text(cart_final, feature_names=list(X.columns))
 print(tree_rules)
 
-
+################################################
+# 10. Extracting Python Codes of Decision Rules
+################################################
 
 
