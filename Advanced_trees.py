@@ -80,6 +80,8 @@ def val_curve_params(model, X, y, param_name, param_range, scoring="roc_auc", cv
 
 val_curve_params(rf_final, X, y, "max_depth", range(1, 11), scoring="roc_auc")
 
-
+#######
+# GBM
+#######
 
 
