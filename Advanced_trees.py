@@ -38,7 +38,47 @@ rf_best_cv.best_params_
 
 rf_final = rf_model.set_params(**rf_best_cv.best_params_, random_state=17).fit(X, y)
 
+cv_results = cross_validate(rf_final, X, y, cv=10, scoring=["accuracy", "f1", "roc_auc"])
+cv_results['test_accuracy'].mean()
+cv_results['test_f1'].mean()
+cv_results['test_roc_auc'].mean()
 
+
+def plot_importance(model, features, num=len(X), save=False):
+    feature_imp = pd.DataFrame({'Value': model.feature_importances_, 'Feature': features.columns})
+    plt.figure(figsize=(10, 10))
+    sns.set(font_scale=1)
+    sns.barplot(x="Value", y="Feature", data=feature_imp.sort_values(by="Value",
+                                                                     ascending=False)[0:num])
+    plt.title('Features')
+    plt.tight_layout()
+    plt.show()
+    if save:
+        plt.savefig('importances.png')
+
+plot_importance(rf_final, X)
+
+def val_curve_params(model, X, y, param_name, param_range, scoring="roc_auc", cv=10):
+    train_score, test_score = validation_curve(
+        model, X=X, y=y, param_name=param_name, param_range=param_range, scoring=scoring, cv=cv)
+
+    mean_train_score = np.mean(train_score, axis=1)
+    mean_test_score = np.mean(test_score, axis=1)
+
+    plt.plot(param_range, mean_train_score,
+             label="Training Score", color='b')
+
+    plt.plot(param_range, mean_test_score,
+             label="Validation Score", color='g')
+
+    plt.title(f"Validation Curve for {type(model).__name__}")
+    plt.xlabel(f"Number of {param_name}")
+    plt.ylabel(f"{scoring}")
+    plt.tight_layout()
+    plt.legend(loc='best')
+    plt.show(block=True)
+
+val_curve_params(rf_final, X, y, "max_depth", range(1, 11), scoring="roc_auc")
 
 
 
