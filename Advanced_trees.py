@@ -8,3 +8,25 @@ from sklearn.model_selection import GridSearchCV, cross_validate, RandomizedSear
 from xgboost import XGBClassifier
 from lightgbm import LGBMClassifier
 from catboost import CatBoostClassifier
+
+pd.set_option("display.max_columns",None)
+
+warnings.simplefilter(action="ignore", category=Warning)
+
+df = pd.read_csv("datasets/diabetes.csv")
+
+y = df["Outcome"]
+X = df.drop(["Outcome"],axis=1) 
+
+
+
+
+
+
+
+
+
+
+
+
+
