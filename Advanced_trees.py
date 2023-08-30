@@ -18,7 +18,15 @@ df = pd.read_csv("datasets/diabetes.csv")
 y = df["Outcome"]
 X = df.drop(["Outcome"],axis=1) 
 
+rf_model = RandomForestClassifier(random_state=17)
 
+rf_model.get_params()
+
+cv_results = cross_validate(rf_model,X,y, cv=10, scoring=["accuracy", "f1", "roc_auc"])
+cv_results['test_accuracy'].mean()
+cv_results['test_f1'].mean()
+cv_results['test_roc_auc'].mean()
+print(cv_results)
 
 
 
