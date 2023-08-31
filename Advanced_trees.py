@@ -87,3 +87,14 @@ val_curve_params(rf_final, X, y, "max_depth", range(1, 11), scoring="roc_auc")
 gbm_model = GradientBoostingClassifier(random_state=17)
 
 gbm_model.get_params()
+
+cv_results = cross_validate(gbm_model, X, y, cv=5, scoring=["accuracy", "f1", "roc_auc"])
+cv_results['test_accuracy'].mean()
+# 0.7591715474068416
+cv_results['test_f1'].mean()
+# 0.634
+cv_results['test_roc_auc'].mean()
+# 0.82548
+
+
+
