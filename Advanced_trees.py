@@ -101,3 +101,6 @@ gbm_params = {"learning_rate": [0.01, 0.1],
               "n_estimators": [100, 500, 1000],
               "subsample": [1, 0.5, 0.7]}
 
+gbm_best_grid = GridSearchCV(gbm_model, gbm_params, cv=5, n_jobs=-1, verbose=True).fit(X, y)
+
+gbm_best_grid.best_params_
