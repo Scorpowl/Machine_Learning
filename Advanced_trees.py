@@ -96,5 +96,8 @@ cv_results['test_f1'].mean()
 cv_results['test_roc_auc'].mean()
 # 0.82548
 
-
+gbm_params = {"learning_rate": [0.01, 0.1],
+              "max_depth": [3, 8, 10],
+              "n_estimators": [100, 500, 1000],
+              "subsample": [1, 0.5, 0.7]}
 
