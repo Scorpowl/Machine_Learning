@@ -112,3 +112,7 @@ cv_results = cross_validate(gbm_final, X, y, cv=5, scoring=["accuracy", "f1", "r
 cv_results['test_accuracy'].mean()
 cv_results['test_f1'].mean()
 cv_results['test_roc_auc'].mean()
+
+################################################
+# XGBoost
+################################################
