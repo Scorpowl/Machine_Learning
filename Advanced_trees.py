@@ -134,5 +134,7 @@ xgboost_params = {"learning_rate": [0.1, 0.01],
                   "n_estimators": [100, 500, 1000],
                   "colsample_bytree": [0.7, 1]}
 
+xgboost_best_grid = GridSearchCV(xgboost_model, xgboost_params, cv=5, n_jobs=-1, verbose=True).fit(X, y)
 
+xgboost_final = xgboost_model.set_params(**xgboost_best_grid.best_params_, random_state=17).fit(X, y)
 
