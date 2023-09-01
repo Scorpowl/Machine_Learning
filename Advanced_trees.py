@@ -116,3 +116,15 @@ cv_results['test_roc_auc'].mean()
 ##########
 # XGBoost
 ##########
+
+xgboost_model = XGBClassifier(random_state=17, use_label_encoder=False)
+xgboost_model.get_params()
+
+cv_results = cross_validate(xgboost_model, X, y, cv=5, scoring=["accuracy", "f1", "roc_auc"])
+
+
+
+
+
+
+
