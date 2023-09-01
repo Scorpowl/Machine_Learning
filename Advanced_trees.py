@@ -129,7 +129,10 @@ cv_results['test_f1'].mean()
 cv_results['test_roc_auc'].mean()
 # 0.7987
 
-
+xgboost_params = {"learning_rate": [0.1, 0.01],
+                  "max_depth": [5, 8],
+                  "n_estimators": [100, 500, 1000],
+                  "colsample_bytree": [0.7, 1]}
 
 
 
