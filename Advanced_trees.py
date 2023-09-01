@@ -138,3 +138,7 @@ xgboost_best_grid = GridSearchCV(xgboost_model, xgboost_params, cv=5, n_jobs=-1,
 
 xgboost_final = xgboost_model.set_params(**xgboost_best_grid.best_params_, random_state=17).fit(X, y)
 
+cv_results = cross_validate(xgboost_final, X, y, cv=5, scoring=["accuracy", "f1", "roc_auc"])
+cv_results['test_accuracy'].mean()
+cv_results['test_f1'].mean()
+cv_results['test_roc_auc'].mean()
