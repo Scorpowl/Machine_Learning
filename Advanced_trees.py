@@ -122,7 +122,12 @@ xgboost_model.get_params()
 
 cv_results = cross_validate(xgboost_model, X, y, cv=5, scoring=["accuracy", "f1", "roc_auc"])
 
-
+cv_results['test_accuracy'].mean()
+# 0.75265
+cv_results['test_f1'].mean()
+# 0.631
+cv_results['test_roc_auc'].mean()
+# 0.7987
 
 
 
