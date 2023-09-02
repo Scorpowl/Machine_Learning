@@ -166,4 +166,10 @@ lgbm_final = lgbm_model.set_params(**lgbm_best_grid.best_params_, random_state=1
 
 cv_results = cross_validate(lgbm_final, X, y, cv=5, scoring=["accuracy", "f1", "roc_auc"])
 
+cv_results['test_accuracy'].mean()
+cv_results['test_f1'].mean()
+cv_results['test_roc_auc'].mean()
 
+
+# Hiperparametre optimizasyonu sadece n_estimators için.
+lgbm_model = LGBMClassifier(random_state=17, colsample_bytree=0.9, learning_rate=0.01)
