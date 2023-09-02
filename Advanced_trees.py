@@ -160,7 +160,9 @@ lgbm_params = {"learning_rate": [0.01, 0.1],
                "n_estimators": [100, 300, 500, 1000],
                "colsample_bytree": [0.5, 0.7, 1]}
 
+lgbm_best_grid = GridSearchCV(lgbm_model, lgbm_params, cv=5, n_jobs=-1, verbose=True).fit(X, y)
 
+lgbm_final = lgbm_model.set_params(**lgbm_best_grid.best_params_, random_state=17).fit(X, y)
 
 
 
