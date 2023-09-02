@@ -142,3 +142,12 @@ cv_results = cross_validate(xgboost_final, X, y, cv=5, scoring=["accuracy", "f1"
 cv_results['test_accuracy'].mean()
 cv_results['test_f1'].mean()
 cv_results['test_roc_auc'].mean()
+
+################################################
+# LightGBM
+################################################
+
+lgbm_model = LGBMClassifier(random_state=17)
+lgbm_model.get_params()
+
+
