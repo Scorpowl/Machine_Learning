@@ -155,3 +155,12 @@ cv_results = cross_validate(lgbm_model, X, y, cv=5, scoring=["accuracy", "f1", "
 cv_results['test_accuracy'].mean()
 cv_results['test_f1'].mean()
 cv_results['test_roc_auc'].mean()
+
+lgbm_params = {"learning_rate": [0.01, 0.1],
+               "n_estimators": [100, 300, 500, 1000],
+               "colsample_bytree": [0.5, 0.7, 1]}
+
+
+
+
+
