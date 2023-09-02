@@ -150,4 +150,8 @@ cv_results['test_roc_auc'].mean()
 lgbm_model = LGBMClassifier(random_state=17)
 lgbm_model.get_params()
 
+cv_results = cross_validate(lgbm_model, X, y, cv=5, scoring=["accuracy", "f1", "roc_auc"])
 
+cv_results['test_accuracy'].mean()
+cv_results['test_f1'].mean()
+cv_results['test_roc_auc'].mean()
