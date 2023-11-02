@@ -14,3 +14,15 @@ from sklearn.preprocessing import StandardScaler
 # 4. Model Evaluation
 # 5. Hyperparameter Optimization
 # 6. Final Model
+
+df = pd.read_csv("datasets/diabetes.csv")
+# print(df)
+
+y = df["Outcome"]
+X = df.drop(["Outcome"], axis=1)
+
+X_scaled = StandardScaler().fit_transform(X)
+print(X_scaled)
+
+
+
