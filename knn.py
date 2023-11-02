@@ -44,4 +44,35 @@ y_prob = knn_model.predict_proba(X)[:,1]
 AUC = roc_auc_score(y, y_prob)
 
 cv_results = cross_validate(knn_model, X, y, cv=5, scoring=["accuracy", "f1", "roc_auc"])
-print(cv_results)
+# print(cv_results)
+
+cv_results['test_accuracy'].mean()
+cv_results['test_f1'].mean()
+cv_results['test_roc_auc'].mean()
+
+# # 0.73
+# # 0.59
+# # 0.78
+
+# # 1. Örnek boyutu arttıralabilir.
+# # 2. Veri ön işleme
+# # 3. Özellik mühendisliği
+# # 4. İlgili algoritma için optimizasyonlar yapılabilir.
+
+# ################################################
+# # 5. Hyperparameter Optimization
+# ################################################
+
+knn_model = KNeighborsClassifier()
+knn_model.get_params()
+
+knn_params = {"n_neighbors": range(2,50)}
+
+knn_gs_best = GridSearchCV(knn_model,
+                           knn_params,
+                           cv=5,
+                           n_jobs=-1,
+                           verbose=1).fit(X, y)
+
+knn_gs_best.best_params_
+#17
