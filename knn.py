@@ -42,6 +42,6 @@ y_prob = knn_model.predict_proba(X)[:,1]
 # print(classification_report(y , y_pred))
 
 AUC = roc_auc_score(y, y_prob)
-print(AUC)
 
 cv_results = cross_validate(knn_model, X, y, cv=5, scoring=["accuracy", "f1", "roc_auc"])
+print(cv_results)
