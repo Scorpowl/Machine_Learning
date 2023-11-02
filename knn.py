@@ -22,7 +22,13 @@ y = df["Outcome"]
 X = df.drop(["Outcome"], axis=1)
 
 X_scaled = StandardScaler().fit_transform(X)
-print(X_scaled)
+# print(X_scaled)
 
+X = pd.DataFrame(X_scaled, columns=X.columns)
 
+knn_model = KNeighborsClassifier().fit(X, y)
 
+random_user = X.sample(1,random_state=45)
+print(random_user)
+
+knn_model.predict(random_user)
