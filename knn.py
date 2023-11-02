@@ -29,6 +29,19 @@ X = pd.DataFrame(X_scaled, columns=X.columns)
 knn_model = KNeighborsClassifier().fit(X, y)
 
 random_user = X.sample(1,random_state=45)
-print(random_user)
+# print(random_user)
 
 knn_model.predict(random_user)
+
+# Confusion matrix için y_pred: 
+y_pred = knn_model.predict(X)
+
+# AUC için y_prob:
+y_prob = knn_model.predict_proba(X)[:,1]
+
+# print(classification_report(y , y_pred))
+
+AUC = roc_auc_score(y, y_prob)
+print(AUC)
+
+cv_results = cross_validate(knn_model, X, y, cv=5, scoring=["accuracy", "f1", "roc_auc"])
